@@ -9,9 +9,10 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #fafafa;
         }
         header {
             text-align: center;
@@ -29,12 +30,20 @@
             color: #666;
             margin-bottom: 30px;
         }
+        .intro {
+            background-color: #e8f0fe;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #1a73e8;
+        }
         .search-box {
             padding: 30px;
             background-color: #f9f9f9;
             border-radius: 8px;
             margin-bottom: 40px;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .search-input {
             width: 100%;
@@ -64,12 +73,19 @@
             margin-bottom: 40px;
         }
         .feature {
-            flex-basis: 30%;
+            flex-basis: 23%;
             text-align: center;
             padding: 20px;
             border: 1px solid #eaeaea;
             border-radius: 8px;
             margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .feature h3 {
             color: #1a73e8;
@@ -100,12 +116,45 @@
             background-color: #19C37D;
             color: white;
         }
+        .popular-topics {
+            margin: 40px 0;
+        }
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .topic {
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border-left: 3px solid #1a73e8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .topic h4 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
         .footer {
             text-align: center;
             margin-top: 60px;
             padding-top: 20px;
             border-top: 1px solid #eaeaea;
             color: #666;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .footer-link {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
         }
         .loading {
             display: none;
@@ -125,14 +174,40 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .joke-reveal {
+        .result-section {
             display: none;
-            padding: 20px;
-            background-color: #fffde7;
+            padding: 25px;
+            background-color: #f5f9ff;
             border-radius: 8px;
             margin: 30px 0;
-            text-align: center;
-            font-size: 1.2rem;
+            border: 1px solid #d0e1fd;
+        }
+        .result-header {
+            border-bottom: 1px solid #d0e1fd;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        .result-content {
+            line-height: 1.7;
+        }
+        .resource-link {
+            display: block;
+            margin: 10px 0;
+            padding: 12px 15px;
+            background-color: #f1f3f4;
+            border-radius: 6px;
+            color: #1a73e8;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .resource-link:hover {
+            background-color: #e8eaed;
+        }
+        .external-resources {
+            margin-top: 30px;
+            border-top: 1px solid #d0e1fd;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -141,6 +216,10 @@
         <h1>The Best Documentation Page</h1>
         <p class="subtitle">Everything you need to know about your technical questions</p>
     </header>
+
+    <div class="intro">
+        <p>Welcome to the most comprehensive documentation resource for developers, IT professionals, and technical enthusiasts. Our platform combines clear explanations, practical examples, and industry best practices to help you solve problems efficiently.</p>
+    </div>
 
     <div class="search-box">
         <input type="text" class="search-input" placeholder="Ask your question here..." id="questionInput">
@@ -152,10 +231,16 @@
         <p>Searching for the best answer...</p>
     </div>
 
-    <div class="joke-reveal" id="jokeReveal">
-        <h2>🎉 Congratulations! 🎉</h2>
-        <p>You've discovered our secret: The best documentation is the one you search for yourself!</p>
-        <p>Use these resources for faster answers:</p>
+    <div class="result-section" id="resultSection">
+        <h2 class="result-header">Documentation Result</h2>
+        <div class="result-content">
+            <p>We've analyzed your query and determined that this specific question would be better served by primary research sources. For the most accurate and up-to-date information, we recommend:</p>
+            
+            <div class="external-resources">
+                <h3>External Resources</h3>
+                <p>Based on our documentation experience, these resources will provide the most relevant information for your query:</p>
+            </div>
+        </div>
     </div>
 
     <div class="redirect-buttons" id="redirectButtons" style="display:none;">
@@ -176,9 +261,51 @@
             <h3>Easy to Follow</h3>
             <p>Clear instructions that anyone can understand and implement.</p>
         </div>
+        <div class="feature">
+            <h3>Interactive</h3>
+            <p>Engage with examples and tutorials for better understanding.</p>
+        </div>
+    </div>
+
+    <div class="popular-topics">
+        <h2>Popular Documentation Topics</h2>
+        <div class="topics-grid">
+            <div class="topic">
+                <h4>API Integration</h4>
+                <p>Learn how to integrate with popular APIs and services.</p>
+            </div>
+            <div class="topic">
+                <h4>Database Management</h4>
+                <p>Best practices for database design and optimization.</p>
+            </div>
+            <div class="topic">
+                <h4>Security Protocols</h4>
+                <p>Implement secure authentication and data protection.</p>
+            </div>
+            <div class="topic">
+                <h4>Frontend Development</h4>
+                <p>Create responsive and accessible user interfaces.</p>
+            </div>
+            <div class="topic">
+                <h4>Cloud Infrastructure</h4>
+                <p>Deploy and scale your applications in the cloud.</p>
+            </div>
+            <div class="topic">
+                <h4>Performance Optimization</h4>
+                <p>Techniques to improve speed and efficiency.</p>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link">About</a>
+            <a href="#" class="footer-link">Contact</a>
+            <a href="#" class="footer-link">API</a>
+            <a href="#" class="footer-link">Contribute</a>
+            <a href="#" class="footer-link">Terms</a>
+            <a href="#" class="footer-link">Privacy</a>
+        </div>
         <p>© 2025 The Best Documentation Page - Helping developers help themselves since 2025</p>
     </div>
 
@@ -195,7 +322,7 @@
             // Simulate loading for 2 seconds
             setTimeout(function() {
                 document.getElementById('loadingSection').style.display = 'none';
-                document.getElementById('jokeReveal').style.display = 'block';
+                document.getElementById('resultSection').style.display = 'block';
                 document.getElementById('redirectButtons').style.display = 'flex';
             }, 2000);
         }
