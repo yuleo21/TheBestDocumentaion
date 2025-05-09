@@ -1,2 +1,1 @@
-# TheBestDocumentaion
-*joke*
+# WOW! THIS IS THE WORLD'S BEST DOCUMENTATION PAGE!
