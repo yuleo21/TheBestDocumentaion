@@ -340,6 +340,8 @@
                 document.getElementById('loadingSection').style.display = 'none';
                 document.getElementById('resultSection').style.display = 'block';
                 document.getElementById('redirectButtons').style.display = 'flex';
+                
+                document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
             }, 2000);
         }
         
