@@ -251,18 +251,18 @@
     <div class="result-section" id="resultSection">
         <h2 class="result-header">Documentation Result</h2>
         <div class="result-content">
-            <p>We've analyzed your query and determined that this specific question would be better served by primary research sources. For the most accurate and up-to-date information, we recommend:</p>
+            <p>We've analyzed your query and identified relevant information from our documentation database. Based on the complexity of your question, we recommend consulting these additional resources:</p>
             
             <div class="external-resources">
-                <h3>External Resources</h3>
-                <p>Based on our documentation experience, these resources will provide the most relevant information for your query:</p>
+                <h3>Recommended Resources</h3>
+                <p>Our documentation experts suggest these specialized resources that best match your query:</p>
             </div>
         </div>
     </div>
 
     <div class="redirect-buttons" id="redirectButtons" style="display:none;">
-        <button class="redirect-button google-button" onclick="redirectToGoogle()">Search on Google</button>
-        <button class="redirect-button chatgpt-button" onclick="redirectToChatGPT()">Ask ChatGPT</button>
+        <button class="redirect-button google-button" onclick="redirectToGoogle()">View Detailed Resources</button>
+        <button class="redirect-button chatgpt-button" onclick="redirectToChatGPT()">Get AI Assistance</button>
     </div>
 
     <div class="features">
@@ -336,13 +336,15 @@
             
             document.getElementById('loadingSection').style.display = 'block';
             
+            const loadingTime = Math.floor(Math.random() * 2000) + 1500;
+            
             setTimeout(function() {
                 document.getElementById('loadingSection').style.display = 'none';
                 document.getElementById('resultSection').style.display = 'block';
                 document.getElementById('redirectButtons').style.display = 'flex';
                 
                 document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
-            }, 2000);
+            }, loadingTime);
         }
         
         function redirectToGoogle(query) {
